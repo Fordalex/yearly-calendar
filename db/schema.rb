@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_232435) do
+ActiveRecord::Schema.define(version: 2021_12_12_153607) do
 
   create_table "availabilities", force: :cascade do |t|
-    t.date "date"
     t.datetime "start_time"
     t.datetime "finish_time"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.text "description"
+    t.decimal "cost", precision: 10, scale: 2
+    t.text "note"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.text "name"
+    t.datetime "est_time"
+    t.decimal "cost", precision: 10, scale: 2
+    t.decimal "deposit", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
