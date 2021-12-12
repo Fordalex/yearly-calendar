@@ -1,3 +1,6 @@
 <h1>Admin home page</h1>
 
+
+<p><%= current_administrator.email %></p>
+
 <%= link_to "sign out", destroy_administrator_session_path, method: :delete %>
