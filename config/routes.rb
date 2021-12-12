@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :administrators
   devise_for :users
+
   root to: "home#home"
 
   namespace :admin do
