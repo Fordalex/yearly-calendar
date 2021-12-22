@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.calendar-container {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-title {
+  color: white;
+  text-align: center;
+}
+
+.calendar-dates {
+  border-collapse: collapse;
+}
+
+.calendar-monthContainer {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(55, 55, 55);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.5rem;
+  width: 300px;
+}
+
+.calendar-days {
+  text-align: center;
+  padding: 4px;
+  height: 30px;
+  color: white;
+  display: inline-block;
+  width: 14%;
+  box-sizing: border-box;
+  font-weight: 800;
+}
+
+.calendar-monthContainer td {
+  text-align: center;
+  padding: 4px;
+  height: 30px;
+  width: 30px;
+  color: rgb(185, 185, 185);
+}
+
+.calendar-monthContainer .selected {
+  background-color: rgb(255, 208, 0);
+  color: black;
+  border-radius: 9px;
+}
+
+.calendar-monthContainer .available {
+  background-color: rgb(65, 65, 65);
+  color: white;
+  cursor: pointer;
+}
+
+
+.calendar-numberContainer div {
+  display: inline-block;
+  width: 14%;
+  text-align: center;
+  padding: 7px;
+  box-sizing: border-box;
+}
