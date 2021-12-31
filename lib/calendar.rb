@@ -2,6 +2,10 @@ class Calendar
   include ActionView::Helpers::TagHelper
   include ActionView::Context
 
+  def available_dates
+    Availability.all.pluck(:date)
+  end
+
   def show_calendar
     date = Date.today
     create_calendar_month(date)
@@ -49,11 +53,19 @@ class Calendar
     # Create all the numbers for that month
     (2..days_in_month).each do |i|
       num = i.to_s
-      days += tag.div num.length > 1 ? num : "0#{num}"
+      num = num.length > 1 ? num : "0#{num}"
+      date = Date.new(year, month, i)
+      days += tag.div num, id: date, class: date_available(date)
     end
 
     tag.div class: "calendar-numberContainer" do
       days
     end
+  end
+
+  private
+
+  def date_available(date)
+    available_dates.include?(date) ? "available" : ""
   end
 end
