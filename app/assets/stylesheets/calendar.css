@@ -4,8 +4,7 @@
   background-color: rgb(37, 37, 37);
   color: white;
   padding: 1rem;
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .calendar-title {
@@ -23,7 +22,7 @@
   padding: 1rem;
   border-radius: 8px;
   margin: 0.5rem;
-  width: 300px;
+  width: auto;
 }
 
 .calendar-days {
@@ -64,4 +63,14 @@
   text-align: center;
   padding: 7px;
   box-sizing: border-box;
+}
+
+@media screen and (min-width: 820px) {
+  .calendar-monthContainer {
+    max-width: 300px;
+  }
+  .calendar-container {
+    display: flex;
+    justify-content: center;
+  }
 }
