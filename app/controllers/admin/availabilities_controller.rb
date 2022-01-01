@@ -8,7 +8,7 @@ module Admin
     end
 
     def new
-      @availabilty = Availability.new
+      @availability = Availability.new
     end
 
     def create
@@ -18,7 +18,7 @@ module Admin
       else
         flash[:warning] = "An error has occurred please try again"
       end
-      redirect_to admin_root_path
+      redirect_to admin_availabilities_path
     end
 
     def edit
@@ -30,12 +30,12 @@ module Admin
       else
         flash[:warning] = "An error has occurred please try again"
       end
-      redirect_to admin_root_path
+      redirect_to admin_availabilities_path
     end
 
     def destroy
       @availability.destroy
-      redirect_to admin_root_path
+      redirect_to admin_availabilities_path
     end
 
     private

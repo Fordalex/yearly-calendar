@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "home#home"
-    resources "availabilities", expect: %i[show]
+    resources "availabilities"
   end
 
   namespace :profile do

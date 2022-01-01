@@ -38,7 +38,7 @@ RSpec.describe "availabilty", type: :request do
       end
 
       it "create a new collection" do
-        expect(response).to redirect_to admin_root_path
+        expect(response).to redirect_to admin_availabilities_path
         expected_values Availability.last
       end
 
@@ -80,7 +80,7 @@ RSpec.describe "availabilty", type: :request do
     end
 
     it "update a availability values" do
-      expect(response).to redirect_to admin_root_path
+      expect(response).to redirect_to admin_availabilities_path
       expected_values Availability.last
     end
 
@@ -97,7 +97,7 @@ RSpec.describe "availabilty", type: :request do
       delete admin_availability_path(availability)
 
       expect(Availability.count).to be_zero
-      expect(response).to redirect_to admin_root_path
+      expect(response).to redirect_to admin_availabilities_path
     end
   end
 end
