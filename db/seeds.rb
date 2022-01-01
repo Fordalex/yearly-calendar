@@ -20,19 +20,19 @@ User.create(
 )
 
 Availability.create(
-  date: Date.tomorrow,
-  start_time: DateTime.now,
-  finish_time: DateTime.now + 8.hours
-)
-
-Availability.create(
   date: Date.today,
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
 
 Availability.create(
-  date: Date.yesterday,
+  date: Date.tomorrow,
+  start_time: DateTime.now,
+  finish_time: DateTime.now + 8.hours
+)
+
+Availability.create(
+  date: Date.today + 2.days,
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
