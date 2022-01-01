@@ -1,0 +1,8 @@
+.admin-table {
+  border-collapse: collapse;
+}
+
+.admin-table td {
+  border: solid grey 1px;
+  padding: 1rem;
+}

@@ -2,6 +2,7 @@ module Admin
   class AdminController < ApplicationController
     before_action :logout_regular_user!
     before_action :authenticate_administrator!
+    layout "admin"
 
     private
 
