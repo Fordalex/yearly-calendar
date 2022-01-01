@@ -1,6 +1,7 @@
 require 'icalendar'
 
 class Availability < ApplicationRecord
+  validates_presence_of :date
 
   def create_availabilities(bookings)
     availabilities = bookings.each.map do |booking|
