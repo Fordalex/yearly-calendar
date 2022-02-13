@@ -54,9 +54,10 @@ class Calendar
     # Create all the numbers for that month
     days = ActiveSupport::SafeBuffer.new("")
     (1..days_in_month).each do |i|
-      num = i.to_s.length > 1 ? i : "0#{i}"
+      text = i.to_s.length > 1 ? i : "0#{i}"
       date = Date.new(year, month, i)
-      days += tag.div num, id: date, class: date_available(date)
+      text = text.to_s + event_text(date)
+      days += tag.div text, id: date, class: date_available(date)
     end
 
     calendar_cells = days
@@ -70,5 +71,15 @@ class Calendar
 
   def date_available(date)
     available_dates.include?(date) ? "available" : ""
+  end
+
+  def event_text(date)
+    if available_dates.include?(date)
+      event = Event.find_by(date: date)
+      puts "this is the event text"
+      event.title.to_s
+    else
+      ""
+    end
   end
 end

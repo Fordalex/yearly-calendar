@@ -8,25 +8,27 @@
 Administrator.destroy_all
 Event.destroy_all
 
+
 Administrator.create(
   email: "admin@example.com",
   password: "Password123"
 )
 
 Event.create(
-  date: Date.today,
+  date:  Date.new(2022, 01, 27),
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
 
 Event.create(
-  date: Date.tomorrow,
+  date:  Date.new(2022, 07, 9),
+  title: "My Birthday",
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
 
 Event.create(
-  date: Date.today + 2.days,
+  date:  Date.new(2022, 02, 14),
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
