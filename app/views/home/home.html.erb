@@ -1,13 +1,14 @@
 <%= javascript_pack_tag "calendar" %>
 
-<h1>Home page</h1>
-
-<br>
 <%= link_to "Admin sign in", new_administrator_session_path %>
 
 <% if current_administrator %>
   <p><%= current_administrator.email %></p>
 <% end %>
+
+<h1 class="title">Calendar</h1>
+
+<br>
 
 <div class="calendar-container">
   <%= Calendar.new.show_calendar %>

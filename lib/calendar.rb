@@ -7,9 +7,9 @@ class Calendar
   end
 
   def show_calendar
-    date = Date.today
+    date = Date.new(2022, 01, 01)
     calendars = ActiveSupport::SafeBuffer.new("")
-    3.times do |i|
+    12.times do |i|
       calendars += create_calendar_month(date + i.month)
     end
     calendars
@@ -47,8 +47,8 @@ class Calendar
 
     # Create offset or start days
     if offset > 1
-      offset_divs = tag.div
-      (offset - 2).times {|i| offset_divs += tag.div}
+      offset_divs = tag.div "-"
+      (offset - 2).times {|i| offset_divs += tag.div "-"}
     end
 
     # Create all the numbers for that month
