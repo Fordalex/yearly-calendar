@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_164606) do
+ActiveRecord::Schema.define(version: 2022_02_13_101205) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,31 +24,16 @@ ActiveRecord::Schema.define(version: 2021_12_12_164606) do
     t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
   end
 
-  create_table "availabilities", force: :cascade do |t|
+  create_table "event_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "finish_time"
     t.date "date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.text "description"
-    t.decimal "cost", precision: 10, scale: 2
-    t.text "note"
-    t.datetime "start_time"
-    t.datetime "finish_time"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.text "name"
-    t.datetime "est_time"
-    t.decimal "cost", precision: 10, scale: 2
-    t.decimal "deposit", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,7 +3,7 @@ class Calendar
   include ActionView::Context
 
   def available_dates
-    @available_dates ||= Availability.all.pluck(:date)
+    @available_dates ||= Event.all.pluck(:date)
   end
 
   def show_calendar

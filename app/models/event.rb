@@ -1,6 +1,6 @@
 require 'icalendar'
 
-class Availability < ApplicationRecord
+class Event < ApplicationRecord
   validates_presence_of :date
 
   def create_availabilities(bookings)
@@ -10,7 +10,7 @@ class Availability < ApplicationRecord
         finish_time: booking.dtend,
       }
     end
-    Availability.insert_all(availabilities)
+    Event.insert_all(availabilities)
   end
 
   private

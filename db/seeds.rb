@@ -6,32 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Administrator.destroy_all
-Availability.destroy_all
-User.destroy_all
+Event.destroy_all
 
 Administrator.create(
   email: "admin@example.com",
   password: "Password123"
 )
 
-User.create(
-  email: "user@example.com",
-  password: "Password123"
-)
-
-Availability.create(
+Event.create(
   date: Date.today,
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
 
-Availability.create(
+Event.create(
   date: Date.tomorrow,
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
 )
 
-Availability.create(
+Event.create(
   date: Date.today + 2.days,
   start_time: DateTime.now,
   finish_time: DateTime.now + 8.hours
