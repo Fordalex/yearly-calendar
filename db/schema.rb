@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_105217) do
+ActiveRecord::Schema.define(version: 2022_02_13_111457) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_105217) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "colour"
   end
 
   create_table "events", force: :cascade do |t|
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 2022_02_13_105217) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.text "description"
+    t.integer "event_type_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
   create_table "users", force: :cascade do |t|
