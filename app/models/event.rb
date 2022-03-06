@@ -2,6 +2,7 @@ require 'icalendar'
 
 class Event < ApplicationRecord
   validates_presence_of :date
+  belongs_to :event_type
 
   def create_availabilities(bookings)
     availabilities = bookings.each.map do |booking|
