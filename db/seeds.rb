@@ -14,21 +14,35 @@ Administrator.create(
   password: "Password123"
 )
 
+
+birthday = EventType.create(
+  name: "Birthday",
+  colour: "#f00"
+)
+
+holiday = EventType.create(
+  name: "Holiday",
+  colour: "#0f0"
+)
+
 Event.create(
   date:  Date.new(2022, 01, 27),
   start_time: DateTime.now,
-  finish_time: DateTime.now + 8.hours
+  finish_time: DateTime.now + 8.hours,
+  event_type: birthday
 )
 
 Event.create(
   date:  Date.new(2022, 07, 9),
   title: "My Birthday",
   start_time: DateTime.now,
-  finish_time: DateTime.now + 8.hours
+  finish_time: DateTime.now + 8.hours,
+  event_type: birthday
 )
 
 Event.create(
-  date:  Date.new(2022, 02, 14),
+  date:  Date.new(2022, 05, 20),
   start_time: DateTime.now,
-  finish_time: DateTime.now + 8.hours
+  finish_time: DateTime.now + 8.hours,
+  event_type: holiday
 )
