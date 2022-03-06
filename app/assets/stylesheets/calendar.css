@@ -68,6 +68,22 @@
   box-sizing: border-box;
   border: solid 1px grey;
   min-height: 3vw;
+  position: relative;
+}
+
+.past::after {
+  content: "X";
+  font-size: 2.5vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: rgba(255,0,0,0.4);
+}
+
+.today {
+  background-color: rgb(231, 231, 231);
 }
 
 @media screen and (min-width: 750px) {

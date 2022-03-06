@@ -2,15 +2,22 @@ class Calendar
   include ActionView::Helpers::TagHelper
   include ActionView::Context
 
+  attr_reader :months
+  attr_reader :start_date
+
+  def initialize(start_date, months)
+    @start_date = start_date
+    @months = months
+  end
+
   def available_dates
     @available_dates ||= Event.all.pluck(:date)
   end
 
   def show_calendar
-    date = Date.new(2022, 01, 01)
     calendars = ActiveSupport::SafeBuffer.new("")
-    12.times do |i|
-      calendars += create_calendar_month(date + i.month)
+    months.times do |i|
+      calendars += create_calendar_month(start_date + i.month)
     end
     calendars
   end
@@ -43,7 +50,6 @@ class Calendar
     month = date.month
     year = date.year
     offset = Date.new(year, month, 1).strftime("%w").to_i
-    days_in_month = (Date.new(year, month, 1) + 1.month - 1.days).strftime("%d").to_i
 
     # Create offset or start days
     if offset > 1
@@ -53,11 +59,17 @@ class Calendar
 
     # Create all the numbers for that month
     days = ActiveSupport::SafeBuffer.new("")
-    (1..days_in_month).each do |i|
+    (1..days_in_month(year, month)).each do |i|
       text = i.to_s.length > 1 ? i : "0#{i}"
       date = Date.new(year, month, i)
-      text = text.to_s + event_text(date)
-      days += tag.div text, id: date, class: date_available(date)
+
+      if event?(date)
+        event = Event.find_by(date: date)
+        text = text.to_s + event.title.to_s
+        days += tag.div text, id: date, style: "background-color: #{event.event_type.colour};", class: class_names(date)
+      else
+        days += tag.div text, id: date, class: class_names(date)
+      end
     end
 
     calendar_cells = days
@@ -69,17 +81,23 @@ class Calendar
 
   private
 
-  def date_available(date)
-    available_dates.include?(date) ? "available" : ""
+  def event?(date)
+    available_dates.include?(date)
   end
 
-  def event_text(date)
-    if available_dates.include?(date)
-      event = Event.find_by(date: date)
-      puts "this is the event text"
-      event.title.to_s
+  def days_in_month(year, month)
+    days_in_month = (Date.new(year, month, 1) + 1.month - 1.days).strftime("%d").to_i
+  end
+
+  def class_names(date)
+    classes = ""
+    classes += "today" if date == Date.today
+    classes += "past" if date < Date.today
+
+    if classes.present?
+      classes
     else
-      ""
+      nil
     end
   end
 end
