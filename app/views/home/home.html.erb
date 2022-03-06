@@ -1,15 +1,22 @@
 <%= javascript_pack_tag "calendar" %>
 
-<%= link_to "Admin sign in", new_administrator_session_path %>
+<div class="calendar-pageContainer">
+  <div class="calendar-mainContainer">
+    <%= link_to "Admin sign in", new_administrator_session_path %>
 
-<% if current_administrator %>
-  <p><%= current_administrator.email %></p>
-<% end %>
+    <% if current_administrator %>
+      <p><%= current_administrator.email %></p>
+    <% end %>
 
-<h1 class="title">Calendar</h1>
+    <h1 class="title">Calendar</h1>
 
-<br>
+    <br>
 
-<div class="calendar-container">
-  <%= Calendar.new(Date.new(2022, 01, 01), 12).show_calendar %>
+    <div class="calendar-container">
+      <%= Calendar.new(Date.new(2022, 01, 01), 12).show_calendar %>
+    </div>
+  </div>
+  <div class="calendar-adminContainer">
+    <h1>Admin stuff</h1>
+  </div>
 </div>
