@@ -65,10 +65,10 @@ class Calendar
 
       if event?(date)
         event = Event.find_by(date: date)
-        text = text.to_s + event.title.to_s
-        days += tag.div text, id: date, style: "background-color: #{event.event_type.colour};", class: class_names(date)
+        text = text.to_s + "<p>#{event.title}</p>"
+        days += tag.div text.html_safe, id: date, style: style_values(event), class: class_values(date)
       else
-        days += tag.div text, id: date, class: class_names(date)
+        days += tag.div text, id: date, class: class_values(date)
       end
     end
 
@@ -89,7 +89,7 @@ class Calendar
     days_in_month = (Date.new(year, month, 1) + 1.month - 1.days).strftime("%d").to_i
   end
 
-  def class_names(date)
+  def class_values(date)
     classes = ""
     classes += "today" if date == Date.today
     classes += "past" if date < Date.today
@@ -99,5 +99,9 @@ class Calendar
     else
       nil
     end
+  end
+
+  def style_values(event)
+    "background-color: #{event.event_type.colour};"
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe Calendar, type: :class do
       allow(Date).to receive(:today).and_return(Date.new(2022, 04, 01))
       allow_any_instance_of(Calendar).to receive(:days_in_month).and_return(1)
 
-      html_days = '<div class="calendar-numberContainer"><div id="2022-05-01" style="background-color: #900;">01Event</div></div>'
+      html_days = '<div class="calendar-numberContainer"><div id="2022-05-01" style="background-color: #900;">01<p>Event</p></div></div>'
       expect(calendar.calendar_numbers(Date.new(2022,05,01))).to eq html_days
     end
   end
