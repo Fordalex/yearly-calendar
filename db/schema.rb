@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_02_13_111457) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_111457) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.text "description"
-    t.integer "event_type_id"
+    t.bigint "event_type_id"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
